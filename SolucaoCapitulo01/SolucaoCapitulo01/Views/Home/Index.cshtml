@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Capitulo01.Models.Instituicao>
+
+@{
+    ViewData["Title"] = "Casa do Código - ASP.NET Core MVC";
+    Layout = "~/Views/Shared/_LayoutIES.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div id="carouselExamplesSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img class="d-block img-fluid" src="C:/VisualStudio_Projects/ticket.jpg" alt="ASP NET Core MVC" />
+                </div>
+                <div class="carousel-item active">
+                    <img class="d-block img-fluid" src="C:\VisualStudio_Projects\ticket2.jpg" alt="Casa do Código" />
+                </div>
+                <div class="carousel-item active">
+                    <img class="d-block img-fluid" src="C:\Users\Thomás\Pictures\Tickets\ticket3.jpg" alt="Thom Mattos" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.InstituicaoID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.InstituicaoID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.InstituicaoID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+*@

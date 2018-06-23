@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewBag.Title</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" 
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute" />
+    </environment>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-light bg-primary">
+        <a class="navbar-brand" href="#">
+            <img src="" width="30" height="30" alt="" />
+            ASP.NET Core MVC
+        </a>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">&nbsp;</div>
+            <div class="col-xs-12">&nbsp;</div>
+            <div class="col-xs-12">&nbsp;</div>
+            <div class="col-xs-12">&nbsp;</div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <nav class="nav flex-column bg-transparent">
+                    <a class="navbar-link active" href="~/Instituicao/">
+                        <img src="http://www.featurepics.com/FI/Thumb/20090415/Golden-Greek-Letter-Iota-1152962.jpg" width="30" height="30" alt="" />
+                        Instituições
+                    </a><br />
+                    <a class="navbar-link" href="~/Departamento">
+                        <img src="http://cdn.grid.fotosearch.com/CSP/CSP117/k19258563.jpg" width="30" height="30" alt="" />
+                        Departamentos
+                    </a>
+                </nav>
+            </div>
+
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Thom Mattos</a>
+    </nav>
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js" 
+            crossorigin="anonymous"></script>*@
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="">
+        </script>
+    </environment>
+
+    @RenderSection("ScriptPage", required: false)
+</body>
+</html>
