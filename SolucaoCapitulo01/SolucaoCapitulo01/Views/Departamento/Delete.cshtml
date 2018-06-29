@@ -1,4 +1,4 @@
-﻿@model Capitulo01.Models.Departamento
+﻿@model Modelo.Cadastros.Departamento
 
 @{
     Layout = "_LayoutIES";
@@ -8,55 +8,57 @@
     <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome-all.min.css" />
 }
 
-<div class="card-block">
-    <div class="card-header text-white bg-secondary text-center h1">
-        Exibindo um departamento para remoção
-    </div>
+    <div class="card-block">
+        <div class="card-header text-white bg-secondary text-center h1">
+            Exibindo um departamento para remoção
+        </div>
 
-    <div class="card-body">
-        <div class="form-group">
-            <label asp-for="DepartamentoID" class="control-label"></label>
-            <br />
+        @*<div class="card-body">
+            <div class="form-group">
+                <label asp-for="DepartamentoID" class="control-label"></label>
+                <br />
 
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                </span>
-                <input asp-for="DepartamentoID" class="form-control" disabled="disabled" />
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                    </span>
+                    <input asp-for="DepartamentoID" class="form-control" disabled="disabled" />
+                </div>
+
+                <label asp-for="Nome" class="control-label"></label>
+                <br />
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </span>
+                    <input asp-for="Nome" class="form-control" disabled="disabled" />
+                </div>
+
+                <label asp-for="Instituicao.Nome" class="control-label"></label>
+                <br />
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </span>
+                    <input asp-for="Instituicao.Nome" class="form-control" disabled="disabled" />
+                </div>
             </div>
+        </div>*@
 
-            <label asp-for="Nome" class="control-label"></label>
-            <br />
+        @Html.Partial("~/Views/Departamento/_PartialDetailsContentCard.cshtml", Model)
 
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                </span>
-                <input asp-for="Nome" class="form-control" disabled="disabled" />
-            </div>
-
-            <label asp-for="Instituicao.Nome" class="control-label"></label>
-            <br />
-
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                </span>
-                <input asp-for="Instituicao.Nome" class="form-control" disabled="disabled" />
-            </div>
+        <div class="card-footer bg-info text-center text-white">
+            <a asp-action="Index" class="btn btn-danger">
+                Retornar a listagem de departamentos
+            </a>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalConfirmationDelete">
+                Remover Departamento
+            </button>
         </div>
     </div>
 
-    <div class="card-footer bg-info text-center text-white">
-        <a asp-action="Index" class="btn btn-danger">
-            Retornar a listagem de departamentos
-        </a>
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalConfirmationDelete">
-            Remover Departamento
-        </button>
-    </div>
-</div>
-    
 <div class="modal fade" id="modalConfirmationDelete" tabindex="-1" role="dialog"
      aria-labelledby="deleteModal" aria-hidden="true">
     <div class="modal-dialog" role="document">

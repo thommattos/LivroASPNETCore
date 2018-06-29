@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Capitulo01.Models;
+using Modelo.Cadastros;
 using Microsoft.EntityFrameworkCore;
 
 namespace Capitulo01.Data
@@ -17,7 +17,7 @@ namespace Capitulo01.Data
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Departamento>().ToTable("Departamento");
@@ -26,6 +26,6 @@ namespace Capitulo01.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=IESUtfpr;Trusted_Connection=True;MultipleActiveResultSets=true");
-        }
+        }*/
     }
 }

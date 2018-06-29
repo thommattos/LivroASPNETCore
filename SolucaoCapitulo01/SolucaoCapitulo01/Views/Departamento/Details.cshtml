@@ -1,11 +1,11 @@
-﻿@model Capitulo01.Models.Departamento
+﻿@model Modelo.Cadastros.Departamento
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutIES.cshtml";
 }
 
-@section styles{ 
+@section styles{
     <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome-all.min.css" />
 }
 
@@ -13,11 +13,11 @@
     <div class="card-header text-white bg-secondary text-center h1">
         Exibindo um Departamento existente
     </div>
-        
-    <div class="card-body">
+
+    @*<div class="card-body">
 
         <div class="form-group">
-            @*@Html.DisplayNameFor(model => model.Nome)*@
+            
             <label asp-for="DepartamentoID" class="control-label"></label>
             <br />
             <div class="input-group">
@@ -30,7 +30,7 @@
             <label asp-for="Nome" class="control-label"></label>
             <br />
             <div class="input-group">
-                @*@Html.DisplayFor(model => model.Nome)*@
+                
                 <span class="input-group-addon">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                 </span>
@@ -40,7 +40,7 @@
             <label asp-for="Instituicao.Nome" class="control-label"></label>
             <br />
             <div class="input-group">
-                @*@Html.DisplayNameFor(model => model.Instituicao)*@
+                
                 <span class="input-group-addon">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                 </span>
@@ -48,11 +48,14 @@
             </div>
         </div>
 
-    </div>
+    </div>*@
+
+    @Html.Partial("~/Views/Departamento/_PartialDetailsContentCard.cshtml", Model)
 
     <div class="card-footer bg-info text-center text-white">
         <a asp-action="Edit" asp-route-id="@Model.DepartamentoID" class="btn btn-warning">
-            Alterar</a> |
+            Alterar
+        </a> |
         <a asp-action="Index" class="btn btn-warning">
             Retornar a listagem de departamentos
         </a>

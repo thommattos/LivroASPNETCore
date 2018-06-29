@@ -1,4 +1,4 @@
-﻿@model Capitulo01.Models.Instituicao
+﻿@model Modelo.Cadastros.Instituicao
 
 @{
     Layout = "_LayoutIES";
@@ -12,7 +12,7 @@
     <div class="card-header text-white bg-secondary text-center h1">
         Exibindo uma instituição existente
     </div>
-
+    @*
     <div class="card-body">
         <div class="row">
             <div class="col-xs-7">
@@ -49,10 +49,12 @@
                 @Html.Partial("~/Views/Instituicao/_ComDepartamentos.cshtml", Model.Departamentos.ToList())
             </div>
         </div>
-    </div>
+    </div>*@
+
+    @Html.Partial("~/Views/Instituicao/_PartialDetailsContentCard.cshtml", Model)
 
     <div class="card-footer bg-info text-center text-white">
-        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.InstituicaoID">Alterar</a> | 
+        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.InstituicaoID">Alterar</a> |
         <a asp-action="Index" class="btn btn-warning">Retornar a listagem de instituições</a>
     </div>
 </div>

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Capitulo01.Models;
+using Modelo.Cadastros;
 using SolucaoCapitulo01.Models;
 
 namespace Capitulo01.Controllers
