@@ -18,7 +18,7 @@ namespace Capitulo01
         {
             var host = BuildWebHost(args);
 
-            using (var scope = host.Services.CreateScope())
+            /*using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
@@ -35,8 +35,8 @@ namespace Capitulo01
                     loggger.LogError(ex, "Um erro ocorreu ao popular a base de dados.");
                 }
 
-                host.Run();
-            }
+            }*/
+            host.Run();
             //BuildWebHost(args).Run();
         }
 
