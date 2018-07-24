@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Modelo.Cadastros;
 using Microsoft.EntityFrameworkCore;
 using Modelo.Discente;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using SolucaoCapitulo01.Models.Infra;
 
 namespace Capitulo01.Data
 {
-    public class IESContext : DbContext
+    public class IESContext : IdentityDbContext<UsuarioDaAplicacao>
     {
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Instituicao> Instituicoes { get; set; }

@@ -1,21 +1,9 @@
 ﻿@model Modelo.Cadastros.Instituicao
 
-@{
-    Layout = "_LayoutIES";
-}
-
-@section styles {
-    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome-all.min.css" />
-}
-
-    <div class="card-block">
-        <div class="card-header text-white bg-secondary text-center h1">
-            Exibindo uma instituição existente
-        </div>
-        @*
-        <div class="card-body">
+<div class="card-body">
+    <div class="row">
+        <div class="col-xs-9">
             <div class="form-group">
-
                 <label asp-for="InstituicaoID" class="control-label"></label>
                 <br />
                 <div class="input-group">
@@ -43,19 +31,10 @@
                     <input asp-for="Endereco" class="form-control" disabled="disabled" />
                 </div>
             </div>
-        </div>*@
-
-        @Html.Partial("~/Views/Instituicao/_PartialDetailsContentCard.cshtml", Model)
-
-        <div class="card-footer bg-info text-center text-white">
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="InstituicaoID" />
-                <input type="submit" value="Remover Instituição" class="btn btn-light" /> |
-                <a asp-action="Index" class="btn btn-info">Retornar a listagem</a>
-            </form>
+        </div>
+        
+        <div class="col-xs-3">
+            @Html.Partial("~/Areas/Cadastros/Views/Instituicao/_ComDepartamentos.cshtml", Model.Departamentos.ToList())
         </div>
     </div>
-
-@section ScriptPage {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</div>

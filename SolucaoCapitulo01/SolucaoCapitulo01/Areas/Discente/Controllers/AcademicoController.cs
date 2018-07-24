@@ -8,8 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Modelo.Discente;
 using SolucaoCapitulo01.Data.DAL.Discente;
 
-namespace SolucaoCapitulo01.Controllers
+namespace SolucaoCapitulo01.Areas.Discente.Controllers
 {
+    [Area("Discente")]
     public class AcademicoController : Controller
     {
         private readonly IESContext _context;

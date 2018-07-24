@@ -1,0 +1,28 @@
+﻿@model Modelo.Cadastros.Departamento
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutIES.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome-all.min.css" />
+}
+
+<div class="card-block">
+    <div class="card-header text-white bg-secondary text-center h1">
+        Exibindo um Departamento existente
+    </div>
+
+    
+    @Html.Partial("~/Areas/Cadastros/Views/Departamento/_PartialDetailsContentCard.cshtml", Model)
+
+    <div class="card-footer bg-info text-center text-white">
+        <a asp-action="Edit" asp-route-id="@Model.DepartamentoID" class="btn btn-warning">
+            Alterar
+        </a> |
+        <a asp-action="Index" class="btn btn-warning">
+            Retornar a listagem de departamentos
+        </a>
+    </div>
+</div>

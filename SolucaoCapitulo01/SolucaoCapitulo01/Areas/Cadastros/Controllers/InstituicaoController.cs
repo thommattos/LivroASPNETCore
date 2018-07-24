@@ -5,9 +5,12 @@ using Modelo.Cadastros;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SolucaoCapitulo01.Data.DAL.Cadastros;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Capitulo01.Controllers
+namespace Capitulo01.Areas.Cadastros.Controllers
 {
+    [Area("Cadastros")]
+    [Authorize]
     public class InstituicaoController : Controller
     {
         private readonly IESContext _context;
