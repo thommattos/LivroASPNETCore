@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Capitulo01.Data;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Modelo.Discente;
 using SolucaoCapitulo01.Data.DAL.Discente;
 
@@ -14,11 +18,13 @@ namespace SolucaoCapitulo01.Areas.Discente.Controllers
     public class AcademicoController : Controller
     {
         private readonly IESContext _context;
+        private IHostingEnvironment _env;
         private readonly AcademicoDAL academicoDAL;
 
-        public AcademicoController(IESContext context)
+        public AcademicoController(IESContext context, IHostingEnvironment env)
         {
             _context = context;
+            _env = env;
             academicoDAL = new AcademicoDAL(context);
         }
 
@@ -38,6 +44,30 @@ namespace SolucaoCapitulo01.Areas.Discente.Controllers
                 return NotFound();
 
             return View(academico);
+        }
+
+        public async Task<FileContentResult> GetFoto(long id)
+        {
+            Academico academico = await academicoDAL.ObterAcademicoPorId(id);
+            if (academico != null)
+                return File(academico.Foto, academico.FotoMimeType);
+
+            return null;
+        }
+
+        public async Task<FileResult> DownloadFoto(long id)
+        {
+            Academico academico = await academicoDAL.ObterAcademicoPorId(id);
+            string nomeArquivo = "Foto" + academico.AcademicoID.ToString().Trim() + ".jpg";
+            FileStream fileStream = new FileStream(System.IO.Path.Combine(_env.WebRootPath, nomeArquivo), FileMode.Create, FileAccess.Write);
+            fileStream.Write(academico.Foto, 0, academico.Foto.Length);
+            fileStream.Close();
+
+            IFileProvider provider = new PhysicalFileProvider(_env.WebRootPath);
+            IFileInfo fileInfo = provider.GetFileInfo(nomeArquivo);
+            var readStream = fileInfo.CreateReadStream();
+
+            return File(readStream, academico.FotoMimeType, nomeArquivo);
         }
 
         public async Task<IActionResult> Details(long? id)
@@ -83,13 +113,25 @@ namespace SolucaoCapitulo01.Areas.Discente.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("AcademicoID,Nome,RegistroAcademico,Nascimento")] Academico academico)
+        public async Task<IActionResult> Edit(long? id, 
+            [Bind("AcademicoID,Nome,RegistroAcademico,Nascimento")] Academico academico, 
+            IFormFile foto, string chkRemoverFoto)
         {
             if (id != academico.AcademicoID)
                 return NotFound();
 
             if (ModelState.IsValid)
             {
+                var stream = new MemoryStream();
+                if (chkRemoverFoto != null)
+                    academico.Foto = null;
+                else
+                {
+                    await foto.CopyToAsync(stream);
+                    academico.Foto = stream.ToArray();
+                    academico.FotoMimeType = foto.ContentType;
+                }
+
                 try
                 {
                     await academicoDAL.GravarAcademico(academico);

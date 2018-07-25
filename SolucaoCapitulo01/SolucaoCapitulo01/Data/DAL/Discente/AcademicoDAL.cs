@@ -23,7 +23,7 @@ namespace SolucaoCapitulo01.Data.DAL.Discente
 
         public async Task<Academico> ObterAcademicoPorId(long id)
         {
-            return await _context.Academicos.FindAsync();
+            return await _context.Academicos.FindAsync(id);
         }
 
         public async Task<Academico> GravarAcademico(Academico academico)

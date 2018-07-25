@@ -51,6 +51,9 @@ namespace Capitulo01
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+
+                //app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
             }
 
             app.UseStaticFiles();
