@@ -37,6 +37,9 @@ namespace Capitulo01
             services.AddDbContext<IESContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("IESConnection")));
 
+            services.AddSession();
+            services.AddDistributedMemoryCache();
+
             services.AddMvc();
         }
 
@@ -59,6 +62,8 @@ namespace Capitulo01
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

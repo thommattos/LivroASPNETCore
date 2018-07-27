@@ -22,6 +22,13 @@ namespace SolucaoCapitulo01.Data.DAL.Cadastros
             return _context.Departamentos.Include(i => i.Instituicao).OrderBy(b => b.Nome);
         }
 
+        public IQueryable<Departamento> ObterDepartamentoPorInstituicao(long instituicaoID)
+        {
+            var departamentos = _context.Departamentos.Where(d => d.InstituicaoID == instituicaoID).
+                OrderBy(d => d.Nome);
+            return departamentos;
+        }
+
         public async Task<Departamento> ObterDepartamentoPorId(long id)
         {
             var departamento = await _context.Departamentos.SingleOrDefaultAsync(m => m.DepartamentoID == id);

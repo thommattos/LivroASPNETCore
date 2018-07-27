@@ -11,9 +11,10 @@ using System;
 namespace SolucaoCapitulo01.Migrations
 {
     [DbContext(typeof(IESContext))]
-    partial class IESContextModelSnapshot : ModelSnapshot
+    [Migration("20180727205146_CursoProfessor")]
+    partial class CursoProfessor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
